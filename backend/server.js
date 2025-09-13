@@ -28,7 +28,7 @@ app.use("/api", authRouter);
 app.use("/api", googleRouter);
 app.use("/api", TransactionRouter);
 
-app.use("/uploads", express.static(path.join(__dirname, "../public/uploads")));
+app.use("/uploads", express.static(path.join(process.cwd(), "public/uploads")));
 
 app.use(express.static(path.join(__dirname, "../frontend/dist")));
 
