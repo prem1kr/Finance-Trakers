@@ -9,7 +9,7 @@ export default function useSignup() {
     setLoading(true);
     setError(null);
     try {
-      const response = await axios.post("http://localhost:5000/api/auth/signup", formData);
+      const response = await axios.post("https://tracker-h7ju.onrender.com/api/auth/signup", formData);
       setLoading(false);
       return response.data;
     } catch (err) {
