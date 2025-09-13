@@ -6,15 +6,19 @@ import googleRouter from "./routes/authRoute/googleAuth.js";
 import cors from "cors";
 import TransactionRouter from "./routes/transaction/Transaction.js";
 import path from "path";
+import { fileURLToPath } from "url";
 
 dotenv.config();
 const app = express();
 const PORT = process.env.PORT;
 
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
+
 app.use(express.json());
 
 app.use(cors({
-  origin: "https://personal-finance-traker.onrender.com", 
+  origin: "https://personal-finance-traker.onrender.com",
   methods: ["GET", "POST", "PUT", "DELETE"],
   credentials: true,
 }));
@@ -24,15 +28,12 @@ app.use("/api", authRouter);
 app.use("/api", googleRouter);
 app.use("/api", TransactionRouter);
 
-// Serve uploads folder statically
-app.use("/uploads", express.static(path.join(process.cwd(), "public/uploads")));
+app.use("/uploads", express.static(path.join(__dirname, "../public/uploads")));
 
-// Serve React build files statically
-app.use(express.static(path.join(process.cwd(), "frontend", "dist")));
+app.use(express.static(path.join(__dirname, "../frontend/dist")));
 
-// Catch-all route to serve index.html for SPA client-side routing
-app.get("", (req, res) => {
-  res.sendFile(path.join(process.cwd(), "frontend", "dist", "index.html"));
+app.get("*", (req, res) => {
+  res.sendFile(path.join(__dirname, "../frontend/dist/index.html"));
 });
 
 app.listen(PORT, () => {
