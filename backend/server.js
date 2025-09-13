@@ -12,7 +12,7 @@ const app = express();
 const PORT = process.env.PORT;
 app.use(express.json());
 app.use(cors({
-  origin: "http://localhost:5173", 
+  origin: "https://personal-finance-traker.onrender.com", 
   methods: ["GET", "POST", "PUT", "DELETE"],
   credentials: true,
 }));
