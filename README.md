@@ -1,110 +1,153 @@
-Personal Finance Tracker (MERN Stack)
-A full-stack personal finance tracker application to efficiently manage expenses, income, and financial analytics. Built with MongoDB, Express.js, React.js, and Node.js for scalability, security, and a seamless user experience.
 
-Features
-User Authentication and Authorization for secure account access.
+# Personal Finance Manager 💰
 
-CRUD Operations for expenses, income, and categories.
+A full-stack personal finance management app built with **React (frontend)** and **Node.js/Express (backend)** with **MongoDB** as the database.  
+It allows users to manage income, expenses, and transactions with authentication and file upload support.
 
-File Uploads for avatars or receipts.
+---
 
-Analytics Dashboard displaying charts and reports.
+## 📂 Project Structure
 
-Responsive and clean UI suitable for desktop and mobile.
+### Frontend (`frontend/`)
+- **Framework:** React + Vite
+- **Folders:**
+  - `components/` → Reusable UI components (auth, dashboard, expenses, income, transactions, etc.)
+  - `context/` → Global state management (ThemeContext)
+  - `hooks/` → Custom hooks (add income/expenses, fetch transactions, user info, etc.)
+  - `pages/` → Page-level components (auth, dashboard, etc.)
+  - `utils/` → Helper utilities (icon map, etc.)
+  - `assets/` → Static assets (images, icons, etc.)
 
-Folder Structure Overview
-Backend
-config/ – Configuration files.
+Entry files:
+- `App.jsx` → Main React app
+- `index.css` → Global styles
 
-controllers/ – Logic for authentication, transactions, profile pictures.
+---
 
-middleware/ – Custom Express middleware.
+### Backend (`backend/`)
+- **Framework:** Node.js + Express
+- **Database:** MongoDB
+- **Folders:**
+  - `config/` → Database configuration
+  - `controllers/` → Route logic
+    - `authController/` → Authentication handling
+    - `multer/` → File upload (profile pic)
+    - `TransactionController.js` → Transactions CRUD
+  - `middleware/` → Middleware functions (auth, validation, etc.)
+  - `models/` → Mongoose models (`authdb`, `Transactiondb`)
+  - `routes/` → Express routes (`authRoute`, `transaction`)
+  - `public/uploads/` → Uploaded files storage
 
-models/ – Mongoose schemas for users and transactions.
+Entry files:
+- `server.js` → Express app entry point
+- `.env` → Environment variables
+- `package.json` → Backend dependencies & scripts
 
-public/uploads/avatars/ – Uploaded images.
+---
 
-routes/ – Express route definitions.
+## 🚀 Installation & Setup
 
-.env – Environment variables (instructions below).
+### 1️⃣ Clone the Repository
+```bash
+git clone https://github.com/yourusername/personal-finance-manager.git
+cd personal-finance-manager
+````
 
-package.json – Backend dependencies.
+### 2️⃣ Setup Backend
 
-server.js – Entry point.
-
-Frontend
-dist/ – Production build output.
-
-public/ – Static assets.
-
-src/
-
-assets/ – Images, icons, etc.
-
-components/ – Reusable React components split by feature.
-
-context/ – App-wide context (e.g., theme).
-
-hooks/ – Custom React hooks for logic separation.
-
-pages/ – Route-based UI views.
-
-utils/ – Utility files (e.g., icon mapping).
-
-.env – Environment variables (instructions below).
-
-App.js, index.js, etc. – Root files.
-
-Getting Started
-1. Clone the Repository
-bash
-git clone https://your-repo-url
+```bash
 cd backend
 npm install
-cd ../frontend
-npm install
-2. Environment Variables (.env Files)
-Backend (backend/.env)
-Create a .env file in the backend folder to store sensitive configuration:
+```
 
-text
+Create a **`.env`** file inside `backend/`:
+
+```env
 PORT=5000
-MONGO_URI=your_mongodb_uri
-JWT_SECRET=your_secret_key
-CLIENT_URL=http://localhost:3000
-Never commit your real .env to git. Instead, provide a .env.example with placeholders.
+MONGO_URI=your_mongodb_connection_string
+JWT_SECRET=your_jwt_secret
+```
 
-The backend loads these with dotenv automatically.
+Run the backend:
 
-Frontend (frontend/.env)
-For React, create a .env in the frontend folder:
-
-text
-REACT_APP_API_URL=http://localhost:5000
-REACT_APP_SOME_PUBLIC_KEY=your_public_key
-All variables must be prefixed with REACT_APP_ to be accessible in the app code.
-
-Do not expose secrets in frontend .env – only non-sensitive config.
-
-Usage in code: process.env.REACT_APP_API_URL
-
-Example Files
-Include .env.example in both folders for reference:
-
-backend/.env.example
-
-frontend/.env.example
-
-Running the Application
-Backend:
-
-text
-cd backend
+```bash
 npm start
-Frontend:
+```
 
-text
+### 3️⃣ Setup Frontend
+
+```bash
 cd frontend
-npm start
-Access at http://localhost:3000 (frontend) and http://localhost:5000 (backend API).
+npm install
+npm run dev
+```
+
+---
+
+## 📌 Features
+
+* 🔐 User Authentication (JWT-based login/signup)
+* 💸 Add, edit, delete **income & expenses**
+* 📊 Track **transactions** with categories
+* 📂 File upload support (profile pictures, receipts, etc.)
+* 🎨 Dark/Light Theme support (via `ThemeContext`)
+* 📱 Responsive UI with React
+
+---
+
+## 🛠️ Tech Stack
+
+**Frontend:**
+
+* React
+* Vite
+* Tailwind CSS (or your chosen CSS framework)
+* Context API & Custom Hooks
+
+**Backend:**
+
+* Node.js
+* Express
+* MongoDB + Mongoose
+* Multer (file uploads)
+* JWT (Authentication)
+
+---
+
+## 📡 API Endpoints (Quick Overview)
+
+### Auth
+
+* `POST /auth/register` → Register new user
+* `POST /auth/login` → Login user
+* `GET /auth/profile` → Get user profile
+
+### Transactions
+
+* `POST /transaction/add` → Add transaction
+* `GET /transaction/all` → Get all transactions
+* `PUT /transaction/:id` → Update transaction
+* `DELETE /transaction/:id` → Delete transaction
+
+---
+
+## 🖼️ Screenshots
+
+(Add screenshots of your dashboard, login page, etc.)
+
+---
+
+## 📌 Future Enhancements
+
+* 📈 Analytics & Charts for expenses/income trends
+* 🔔 Notifications & reminders
+* 🌍 Multi-language support
+* 📤 Export data to CSV/Excel
+
+---
+
+## 👨‍💻 Author
+ 
+    Prem kumar
+
 
