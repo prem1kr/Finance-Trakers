@@ -16,7 +16,7 @@ export default function useLogout() {
 
       localStorage.removeItem("token");
       localStorage.removeItem("userId");
-      window.location.href = "/login"; // redirect after logout
+      window.location.href = "/"; // redirect after logout
     } catch (error) {
       console.error("Failed to logout:", error);
       // Optionally show notification here
