@@ -7,7 +7,7 @@ export default function useLogout() {
       if (!token) return;
 
       await axios.post(
-        "http://localhost:5000/api/auth/logout",
+        "https://tracker-h7ju.onrender.com/api/auth/logout",
         {},
         {
           headers: { Authorization: `Bearer ${token}` },
