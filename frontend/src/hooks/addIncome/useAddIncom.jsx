@@ -7,5 +7,5 @@ export async function addIncome(incomeData) {
       Authorization: `Bearer ${token}`,
     },
   };
-  return axios.post("http://localhost:5000/api/Transaction/add", incomeData, config);
+  return axios.post("https://tracker-h7ju.onrender.com/api/Transaction/add", incomeData, config);
 }
