@@ -31,7 +31,7 @@ export default function useExpenses() {
     try {
       const token = localStorage.getItem("token");
       const res = await axios.get(
-        "http://localhost:5000/api/Transaction/get?type=expense",
+        "https://tracker-h7ju.onrender.com/api/Transaction/get?type=expense",
         {
           headers: { Authorization: `Bearer ${token}` },
         }

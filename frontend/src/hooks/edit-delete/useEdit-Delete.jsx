@@ -5,7 +5,7 @@ export function useTransactionApi() {
 
   const editTransaction = useCallback(async (id, updatedData) => {
     if (!token) throw new Error("No token found");
-    const response = await fetch(`http://localhost:5000/api/Transaction/edit/${id}`, {
+    const response = await fetch(`https://tracker-h7ju.onrender.com/api/Transaction/edit/${id}`, {
       method: "PUT",
       headers: {
         Authorization: `Bearer ${token}`,
@@ -22,7 +22,7 @@ export function useTransactionApi() {
 
   const deleteTransaction = useCallback(async (id) => {
     if (!token) throw new Error("No token found");
-    const response = await fetch(`http://localhost:5000/api/Transaction/delete/${id}`, {
+    const response = await fetch(`https://tracker-h7ju.onrender.com/api/Transaction/delete/${id}`, {
       method: "DELETE",
       headers: {
         Authorization: `Bearer ${token}`,

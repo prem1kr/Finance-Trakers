@@ -14,7 +14,7 @@ export default function useTransactions() {
     const fetchTransactions = async () => {
       try {
         const token = localStorage.getItem("token");
-        const response = await axios.get("http://localhost:5000/api/Transaction/get", {
+        const response = await axios.get("https://tracker-h7ju.onrender.com/api/Transaction/get", {
           headers: { Authorization: `Bearer ${token}` },
         });
         const data = response.data.data;

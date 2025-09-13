@@ -8,7 +8,7 @@ export async function uploadUserAvatar(file) {
   formData.append("avatar", file);
 
   const response = await axios.post(
-    "http://localhost:5000/api/auth/upload-avatar",
+    "https://tracker-h7ju.onrender.com/api/auth/upload-avatar",
     formData,
     {
       headers: {

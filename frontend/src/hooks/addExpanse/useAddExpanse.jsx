@@ -7,7 +7,7 @@ export async function addExpense(expenseData) {
   };
 
   const response = await axios.post(
-    "http://localhost:5000/api/Transaction/add",
+    "https://tracker-h7ju.onrender.com/api/Transaction/add",
     expenseData,
     config
   );

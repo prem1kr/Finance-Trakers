@@ -14,7 +14,7 @@ export default function useUser() {
         const token = localStorage.getItem("token");
         if (!token) throw new Error("No token found");
 
-        const res = await axios.get("http://localhost:5000/api/auth/user", {
+        const res = await axios.get("https://tracker-h7ju.onrender.com/api/auth/user", {
           headers: { Authorization: `Bearer ${token}` },
         });
         setUser(res.data.data);
