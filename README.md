@@ -49,8 +49,8 @@ Entry files:
 
 ### 1️⃣ Clone the Repository
 ```bash
-git clone https://github.com/yourusername/personal-finance-manager.git
-cd personal-finance-manager
+git clone https://github.com/prem1kr/Finance-Trakers.git
+cd 
 ````
 
 ### 2️⃣ Setup Backend
@@ -66,6 +66,8 @@ Create a **`.env`** file inside `backend/`:
 PORT=5000
 MONGO_URI=your_mongodb_connection_string
 JWT_SECRET=your_jwt_secret
+GOOGLE_CLIENT_ID=
+CLIENT_SECRET=
 ```
 
 Run the backend:
@@ -76,6 +78,11 @@ npm start
 
 ### 3️⃣ Setup Frontend
 
+Frontend .env
+```env
+VITE_GOOGLE_CLIENT_ID=
+
+```
 ```bash
 cd frontend
 npm install
@@ -101,7 +108,7 @@ npm run dev
 
 * React
 * Vite
-* Tailwind CSS (or your chosen CSS framework)
+* Tailwind CSS 
 * Context API & Custom Hooks
 
 **Backend:**
@@ -111,43 +118,36 @@ npm run dev
 * MongoDB + Mongoose
 * Multer (file uploads)
 * JWT (Authentication)
-
+* Google Authentication
 ---
 
 ## 📡 API Endpoints (Quick Overview)
 
 ### Auth
 
-* `POST /auth/register` → Register new user
-* `POST /auth/login` → Login user
-* `GET /auth/profile` → Get user profile
+* `POST /api/auth/signup` → Register new user
+* `POST /api/auth/login` → Login user
+* `GET /api/auth/user` → Get user profile
 
 ### Transactions
 
-* `POST /transaction/add` → Add transaction
-* `GET /transaction/all` → Get all transactions
-* `PUT /transaction/:id` → Update transaction
-* `DELETE /transaction/:id` → Delete transaction
+* `POST /api/Transaction/add` → Add transaction
+* `GET /api/Transaction/get` → Get all transactions
+* `PUT /api/Transaction/edit/:id` → Update transaction
+* `DELETE /api/Transaction/delete/:id` → Delete transaction
 
 ---
 
-## 🖼️ Screenshots
-
-(Add screenshots of your dashboard, login page, etc.)
-
----
 
 ## 📌 Future Enhancements
 
 * 📈 Analytics & Charts for expenses/income trends
-* 🔔 Notifications & reminders
-* 🌍 Multi-language support
-* 📤 Export data to CSV/Excel
+* 📤 Export data (pdf)
 
 ---
 
 ## 👨‍💻 Author
  
-    Prem kumar
+  name = Prem kumar
 
 
