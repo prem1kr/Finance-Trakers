@@ -31,7 +31,7 @@ app.use("/uploads", express.static(path.join(process.cwd(), "public/uploads")));
 app.use(express.static(path.join(process.cwd(), "frontend", "dist")));
 
 // Catch-all route to serve index.html for SPA client-side routing
-app.get("https://personal-finance-traker.onrender.com/signup", (req, res) => {
+app.get("", (req, res) => {
   res.sendFile(path.join(process.cwd(), "frontend", "dist", "index.html"));
 });
 
