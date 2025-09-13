@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 import toast from "react-hot-toast";
 import Google from "../../components/auth/google.jsx";
 import useSignup from "../../hooks/auth/useSignup.jsx";
@@ -29,7 +29,7 @@ export default function Signup() {
         password: formData.password,
       });
       toast.success("Signup successful, please login");
-      navigate("/login");  
+      navigate("/login");
     } catch {
       toast.error(error);
     }
@@ -124,9 +124,9 @@ export default function Signup() {
           <div className="mt-4 text-center text-sm text-gray-600">
             <p>
               Already have an account?{" "}
-              <a href="/login" className="font-medium text-emerald-600 hover:underline">
+              <Link to="/login" className="font-medium text-emerald-600 hover:underline">
                 Log In
-              </a>
+              </Link>
             </p>
           </div>
         </div>
