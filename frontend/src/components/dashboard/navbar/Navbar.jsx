@@ -26,12 +26,12 @@ export default function Navbar({ showMenuButton, onMenuClick }) {
           {theme === 'light' ? <FiMoon size={20} /> : <FiSun size={20} />}
         </button>
        
-        <button
+{/*         <button
           aria-label="User Profile"
           className="text-gray-600 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white transition"
         >
           <FiUser size={20} />
-        </button>
+        </button> */}
       </div>
     </nav>
   );
