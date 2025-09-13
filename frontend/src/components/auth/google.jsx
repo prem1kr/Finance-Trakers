@@ -1,59 +1,57 @@
 import React, { useState } from "react";
 import { GoogleLogin } from "@react-oauth/google";
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
 function Google() {
   const [step, setStep] = useState("LOGIN");
   const [googleData, setGoogleData] = useState(null);
   const [password, setPassword] = useState("");
+  const navigate = useNavigate();
 
- 
-const handleGoogleLogin = async (credentialResponse) => {
-  try {
-    const res = await axios.post("http://localhost:5000/api/auth/google", {
-      token: credentialResponse.credential,  
-    });
-
-    if (res.data.status === "NEW_USER") {
-      setGoogleData({
-        ...res.data,
+  const handleGoogleLogin = async (credentialResponse) => {
+    try {
+      const res = await axios.post("http://localhost:5000/api/auth/google", {
         token: credentialResponse.credential,
       });
-      setStep("PASSWORD");
-    } else if (res.data.status === "SUCCESS") {
-      localStorage.setItem("token", res.data.token);
-      alert("Login successful ");
+
+      if (res.data.status === "NEW_USER") {
+        setGoogleData({
+          ...res.data,
+          token: credentialResponse.credential,
+        });
+        setStep("PASSWORD");
+      } else if (res.data.status === "SUCCESS") {
+        localStorage.setItem("token", res.data.token);
+        navigate("/dashboard");
+      }
+    } catch (err) {
+      console.error("Google login error:", err.response?.data || err.message);
+      alert("Google login failed ");
     }
-  } catch (err) {
-    console.error("Google login error:", err.response?.data || err.message);
-    alert("Google login failed ");
-  }
-};
+  };
 
-// When user submits password
-const handlePasswordSubmit = async () => {
-  try {
-    const res = await axios.post("http://localhost:5000/api/auth/google", {
-      token: googleData.token,   
-      password,
-    });
+  const handlePasswordSubmit = async () => {
+    try {
+      const res = await axios.post("http://localhost:5000/api/auth/google", {
+        token: googleData.token,
+        password,
+      });
 
-    if (res.data.status === "SUCCESS") {
-      localStorage.setItem("token", res.data.token);
-      alert("Signup successful ");
-      setStep("LOGIN");
+      if (res.data.status === "SUCCESS") {
+        localStorage.setItem("token", res.data.token);
+        navigate("/dashboard");
+      }
+    } catch (err) {
+      console.error("Password setup error:", err.response?.data || err.message);
+      alert("Signup failed ");
     }
-  } catch (err) {
-    console.error("Password setup error:", err.response?.data || err.message);
-    alert("Signup failed ");
-  }
-};
-
+  };
 
   return (
     <div className="flex flex-col items-center justify-center">
       {step === "LOGIN" && (
-        <div className=" rounded-lg text-center">
+        <div className="rounded-lg text-center">
           <GoogleLogin
             onSuccess={handleGoogleLogin}
             onError={() => console.log("Google Login Failed")}
@@ -64,7 +62,7 @@ const handlePasswordSubmit = async () => {
       {step === "PASSWORD" && (
         <div className="p-6 bg-white shadow-md rounded-lg text-center">
           <h1 className="text-xl font-semibold mb-4">
-            Welcome {googleData.name}, set your password
+            Welcome {googleData?.name}, set your password
           </h1>
           <input
             type="password"
