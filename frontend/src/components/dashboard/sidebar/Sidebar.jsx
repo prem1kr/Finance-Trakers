@@ -63,7 +63,7 @@ export default function Sidebar({
           <img
             src={
               user?.avatar
-                ? `http://localhost:5000${user.avatar}`
+                ? `https://tracker-h7ju.onrender.com${user.avatar}`
                 : "https://api.dicebear.com/6.x/avataaars/svg?seed=Mike"
             }
             alt="user avatar"
