@@ -27,7 +27,7 @@ export default function useIncomeData() {
     try {
       const token = localStorage.getItem("token");
       const res = await axios.get(
-        "http://localhost:5000/api/Transaction/get?type=income",
+        "https://tracker-h7ju.onrender.com/api/Transaction/get?type=income",
         {
           headers: { Authorization: `Bearer ${token}` },
         }
