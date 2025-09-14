@@ -11,7 +11,7 @@ function Google() {
 
   const handleGoogleLogin = async (credentialResponse) => {
     try {
-      const res = await axios.post("http://localhost:5000/api/auth/google", {
+      const res = await axios.post("https://tracker-h7ju.onrender.com/api/auth/google", {
         token: credentialResponse.credential,
       });
 
@@ -33,7 +33,7 @@ function Google() {
 
   const handlePasswordSubmit = async () => {
     try {
-      const res = await axios.post("http://localhost:5000/api/auth/google", {
+      const res = await axios.post("https://tracker-h7ju.onrender.com/api/auth/google", {
         token: googleData.token,
         password,
       });
